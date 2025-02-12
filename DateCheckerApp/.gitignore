@@ -1,0 +1,12 @@
+﻿# Ignore the Visual Studio directory
+.vs/
+
+# Ignore build directories
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
