@@ -8,16 +8,55 @@ namespace DateCheckerApp
             string again = "y";
             string[] monthNames = new string[] { "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" };
 
-            while (again == "y")
+            while (again.ToLower() == "y")
             {
-                Console.WriteLine("Bitte gebe 3 Zahlen für ein Datum ein.");
-                Console.Write("Tag: ");
-                int day = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Monat: ");
-                int month = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Jahr: ");
-                int year = Convert.ToInt32(Console.ReadLine());
+                int day = 0, month = 0, year = 0;
 
+                bool dContinue = true;
+                while (dContinue)
+                {
+                    Console.WriteLine("Bitte gebe 3 Zahlen für ein Datum ein.");
+                    Console.Write("Tag: ");
+                    string InputDay = Console.ReadLine();
+                    if (int.TryParse(InputDay, out day))
+                    {
+                        dContinue = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ungültige Eingabe. Bitte versuche es erneut.");
+                    }
+                }
+                bool mContinue = true;
+                while (mContinue)
+                {
+                    Console.Write("Monat: ");
+                    string InputMonth = Console.ReadLine();
+                    if (int.TryParse(InputMonth, out month))
+                    {
+                        mContinue = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ungültige Eingabe. Bitte versuche es erneut.");
+                    }
+                }
+                bool yContinue = true;
+                while (yContinue)
+                {
+                    Console.Write("Jahr: ");
+                    string InputYear = Console.ReadLine();   
+                    if (int.TryParse(InputYear, out year))
+                    {
+                        yContinue = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ungültige Eingabe. Bitte versuche es erneut.");
+                    }
+                }
+
+                
                 ValidDateCheck vDC = new ValidDateCheck();
                 bool result = vDC.ValidDate(day, month, year);
                 try
@@ -56,7 +95,7 @@ namespace DateCheckerApp
                 Console.Write("Weiteres Datum prüfen y/n: ");
                 again = Console.ReadLine();
 
-                if (again == "y")
+                if (again.ToLower() == "y")
                 {
                     Console.Clear();
                 }
